@@ -1,5 +1,6 @@
 import firebase from 'firebase/app'
 
+// IMPORTANDO FUNÇÕES DO FIREBASE
 import 'firebase/auth'
 import 'firebase/database'
 
@@ -13,7 +14,9 @@ const firebaseConfig = {
     appId: process.env.REACT_APP_APP_ID
 };
 
+// FUNÇÃO QUE INICIA O FIREBASE COM AS CONFIGURAÇÕES PASSADAS
 firebase.initializeApp(firebaseConfig);
 
+// EXPORTANDO FUNÇÕES DO FIREBASE PARA O APP
 export const auth = firebase.auth;
 export const datebase = firebase.database;
