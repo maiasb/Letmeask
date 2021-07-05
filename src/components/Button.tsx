@@ -1,17 +1,14 @@
-// Lib para utilizar os estados dos componentes
-import { useState } from "react"
+// IMPORTA LIB CONTENDO TODOS OS ATRIBUTOS QUE UM BOTÃO PODE TER
+import { ButtonHTMLAttributes } from 'react';
+import '../styles/button.scss'
+
+// TYPE RECEBE TODOS OS PARÂMETROS QUE UM BOTÃO PODE TER
+type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement>;
 
 // FUNÇÃO DO COMPONENTE BUTTON
-export function Button() {
-    const [counter, setCounter] = useState(0)
-
-    function increment() {
-        setCounter(counter + 1)
-        console.log(counter)
-    }
-
+export function Button(props: ButtonProps) {
     return (
-        // CLICK CHAMA A FUNÇÃO INCREMENT / COUNTER SENDO MOSTRADO DENTRO DO BOTÃO
-        <button onClick={increment}>{counter}</button>
+        // {...props} RECEBE TODAS AS PROPRIEDADES ENVIADAS PELO PARÂMETRO
+        <button className="button" {...props} />
     )
 }
