@@ -1,5 +1,5 @@
 // LIB PARA O COMPARTILHAMENTO DE INFORMAÇÕES ENTRE OS COMPONENTES
-import { createContext, useState } from 'react'
+import { createContext, useState, useEffect } from 'react'
 
 // LIB E FUNÇÕES PRA POSSIBILITAR O ROTEAMENTO DA APLICAÇÃO 
 import { BrowserRouter, Route } from 'react-router-dom';
@@ -29,6 +29,27 @@ export const AuthContext = createContext({} as AuthContextType)
 function App() {
   // CRIAÇÃO DE ESTADO PARA O USUÁRIO
   const [user, setUser] = useState<User>();
+
+  // USEEFFECT DISPARA FUNÇÃO QUANDO HOUVER MUDANÇAS NA INFORMAÇÃO PASSADA NO ARRAY
+  useEffect(() => {
+    auth().onAuthStateChanged(user => {
+      if (user) {
+        const { displayName, photoURL, uid } = user;
+
+        // SE O USUÁRIO NÃO POSSUIR NOME OU FOTO, RETORNA ERRO
+        if (!displayName || !photoURL) {
+          throw new Error('Missing information from Google Account.');
+        }
+
+        // FUNÇÃO PARA CRIAR USER
+        setUser({
+          id: uid,
+          name: displayName,
+          avatar: photoURL
+        })
+      }
+    });
+  }, [])
 
   // LOGIN COM UM POPUP DO GOOGLE
   async function signInWithGoogle() {
