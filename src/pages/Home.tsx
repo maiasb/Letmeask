@@ -8,14 +8,23 @@ import googleIconImg from '../assets/images/google-icon.svg'
 import { Button } from '../components/Button'
 
 import '../styles/auth.scss'
+import { auth, firebase, datebase } from '../services/firebase';
 
 export function Home() {
     // ADICIONANDO HOOK DE ROTA NA CONSTANTE
     const history = useHistory();
 
     // CRIAÇÃO DE FUNÇÃO PARA REDIRECIONAMENTO DA ROTA
-    function navigateTo() {
-        history.push("/rooms/new");
+    function handleCreateRoom() {
+        const provider = new firebase.auth.GoogleAuthProvider();
+
+        // AUTENTICAÇÃO EM UM POPUP
+        firebase.auth().signInWithPopup(provider).then(result => {
+            console.log(result)
+
+            history.push("/rooms/new");
+        });
+
     };
 
     return (
@@ -31,7 +40,7 @@ export function Home() {
                 <div className="main-content">
                     <img src={logoImg} alt="Letmeask" />
 
-                    <button onClick={navigateTo} className="create-room">
+                    <button onClick={handleCreateRoom} className="create-room">
                         <img src={googleIconImg} alt="Logo do Google" />
                         Crie sua sala com o Google
                     </button>
