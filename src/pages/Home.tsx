@@ -1,3 +1,5 @@
+// 
+import { useContext } from 'react';
 // LIB PARA NAVEGAÇÃO NO CLICK DO BUTTON
 import { useHistory } from 'react-router-dom';
 
@@ -5,26 +7,26 @@ import illustrationImg from '../assets/images/illustration.svg'
 import logoImg from '../assets/images/logo.svg'
 import googleIconImg from '../assets/images/google-icon.svg'
 
+import { AuthContext } from '../App';
+
 import { Button } from '../components/Button'
 
 import '../styles/auth.scss'
-import { auth, firebase, datebase } from '../services/firebase';
 
 export function Home() {
     // ADICIONANDO HOOK DE ROTA NA CONSTANTE
     const history = useHistory();
 
+    const { user, signInWithGoogle } = useContext(AuthContext);
+
     // CRIAÇÃO DE FUNÇÃO PARA REDIRECIONAMENTO DA ROTA
-    function handleCreateRoom() {
-        const provider = new firebase.auth.GoogleAuthProvider();
+    async function handleCreateRoom() {
+        if (!user) {
+            await signInWithGoogle();
+        }
 
-        // AUTENTICAÇÃO EM UM POPUP
-        firebase.auth().signInWithPopup(provider).then(result => {
-            console.log(result)
-
-            history.push("/rooms/new");
-        });
-
+        // REDIRECIONA PARA A ROTA
+        history.push("/rooms/new");
     };
 
     return (
