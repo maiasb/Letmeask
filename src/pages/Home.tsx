@@ -1,3 +1,6 @@
+// LIB PARA NAVEGAÇÃO NO CLICK DO BUTTON
+import { useHistory } from 'react-router-dom';
+
 import illustrationImg from '../assets/images/illustration.svg'
 import logoImg from '../assets/images/logo.svg'
 import googleIconImg from '../assets/images/google-icon.svg'
@@ -7,6 +10,14 @@ import { Button } from '../components/Button'
 import '../styles/auth.scss'
 
 export function Home() {
+    // ADICIONANDO HOOK DE ROTA NA CONSTANTE
+    const history = useHistory();
+
+    // CRIAÇÃO DE FUNÇÃO PARA REDIRECIONAMENTO DA ROTA
+    function navigateTo() {
+        history.push("/rooms/new");
+    };
+
     return (
         <div id="page-auth">
             <aside>
@@ -15,14 +26,18 @@ export function Home() {
                 <strong>Crie salas de Q&amp;A ao-vivo</strong>
                 <p>Tire as dúvidas da sua audiência em tempo-real</p>
             </aside>
+
             <main>
                 <div className="main-content">
                     <img src={logoImg} alt="Letmeask" />
-                    <button className="create-room">
+
+                    <button onClick={navigateTo} className="create-room">
                         <img src={googleIconImg} alt="Logo do Google" />
                         Crie sua sala com o Google
                     </button>
+
                     <div className="separator">ou entre em uma sala</div>
+
                     <form>
                         <input
                             type="text"
