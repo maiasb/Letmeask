@@ -1,6 +1,8 @@
-# Getting Started with Create React App
+# Getting Started in the LetMeAsk
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+Obs: Ao baixar o repositório, utilizar no terminal o comando `yarn` no seu terminal para instalar todas as dependências necessárias.
 
 ## Available Scripts
 
