@@ -4,6 +4,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 Obs: Ao baixar o repositório, utilizar no terminal o comando `yarn` no seu terminal para instalar todas as dependências necessárias.
 
+Obs2: Configure sua conexão com o firebase em src/service/firebase.ts
+
 ## Available Scripts
 
 In the project directory, you can run:
