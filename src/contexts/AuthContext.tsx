@@ -28,7 +28,7 @@ export function AuthContextProvider(props: AuthContextProviderProps) {
 
     // USEEFFECT DISPARA FUNÇÃO QUANDO HOUVER MUDANÇAS NA INFORMAÇÃO PASSADA NO ARRAY
     useEffect(() => {
-        const unsubscribe = auth().onAuthStateChanged(user => {
+        const unsubscribe = auth.onAuthStateChanged(user => {
             if (user) {
                 const { displayName, photoURL, uid } = user;
 
@@ -56,7 +56,7 @@ export function AuthContextProvider(props: AuthContextProviderProps) {
         const provider = new firebase.auth.GoogleAuthProvider();
 
         // RESULT ESPERA RESPOSTA DE LOGIN COM POPUP DO GOOGLE
-        const result = await auth().signInWithPopup(provider);
+        const result = await auth.signInWithPopup(provider);
 
         // SE POSSUIR O USUÁRIO NA AUTENTICAÇÃO
         if (result.user) {
