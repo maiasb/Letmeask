@@ -11,7 +11,6 @@ import { useAuth } from '../hooks/useAuth';
 import '../styles/auth.scss'
 import { useState } from 'react';
 import { database } from '../services/firebase';
-import userEvent from '@testing-library/user-event';
 
 export function NewRoom() {
     const { user } = useAuth();
