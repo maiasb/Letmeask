@@ -1,10 +1,10 @@
+# Sobre
+- Obs: Ao baixar o repositório, utilizar no terminal o comando `yarn` no seu terminal para instalar todas as dependências necessárias.
+- Obs2: Configure sua conexão com o firebase em src/service/firebase.ts
+- Aplicação publicada em meu Firebase [Letmeask](https://letmeask-ffa66.web.app/)
 # Getting Started in the LetMeAsk
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-Obs: Ao baixar o repositório, utilizar no terminal o comando `yarn` no seu terminal para instalar todas as dependências necessárias.
-
-Obs2: Configure sua conexão com o firebase em src/service/firebase.ts
 
 ## Available Scripts
 
